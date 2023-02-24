@@ -1,0 +1,32 @@
+.screen{
+    text-align: right;
+    padding: 20px 8px;
+    width: 400px;
+    background-color: black;
+    color: white;
+}
+.ind{
+    background-color: rgb(209, 193, 193);
+    color: black;
+    height: 100px;
+    width: 100px;
+    font-weight: 400;
+    font-size: xxx-large;
+
+}
+.ind:hover{
+    background-color: #dbd1d1;
+}
+.ind:active{
+    background-color: #bec2cc;
+}
+.c{
+    width: 205px;
+}
+.zero{
+    width: 310px;
+}
+.sym{
+    background-color: rgb(224, 184, 73);
+}
+
