@@ -76,7 +76,7 @@ let handleMath=input =>
              maths(input);
         }
         operator=input;
-        buffer="0";
+        buffer=intBuffer;
     }
 }
 
