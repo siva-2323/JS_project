@@ -1,98 +1,104 @@
+
 let total=0;
 let buffer="0";
 let operator;
-const screen=document.querySelector(".screen");  // all buttons as input
+const screen=document.querySelector(".screen");
 
 let init=()=>
 {
 document
     .querySelector(".buttons")
-    .addEventListener("click",function (event){  // after clicked a button
+    .addEventListener("click",function (event){ 
         buttonClick(event.target.innerText)
     });
 }
-let buttonClick=(input) =>  //button value as input
+let buttonClick=(input) => 
 {
-    // has to check whether a num or sym
     if(isNaN(parseInt(input)))
     {
-        // input is not a num
-
          handleNaN(input);   
-        }
-        else {
-            handleNum(input);
-        }
-        refresh();  
+    }
+    else {
+        handleNum(input);
+    }
+    refresh();  
     
 }
 let handleNaN=input =>
-{       // operation button or action button
+{       
     switch (input)
     {
-        case "c":     // clears everything
+        case "c":
             buffer="0";
             total=0;
             break;
         case "←":
             buffer=buffer.substring(0,buffer.length-1);
-            break;     // action button completes
-        case "=":
-            if(operator==null) return;   // no operation has entered before
-            else 
-            {
-                maths(parseInt(buffer));  //a;ready a operator is pressed
-                operator=null;
-                buffer +=total;
-                total=0;
-            }
             break;
-            default:    // for the add sub mul....
-                handleMath(input);
-                break;
+        case "=":
+            if (operator === null){
+                return;
+            }else{
+                maths(parseInt(buffer));
+                operator = null;
+                buffer = +total;
+                total = 0;
+            }
+            break;   
+        default: 
+            handleMath(input);
+            break;
 
-    }   // switch closes
-
-
-
+    } 
 }
 
-
-let handleNum=input =>
+let handleNum=(input) =>
 {
-    if(buffer =="0") buffer=input;
-    else buffer += input;
+    if(buffer ==="0"){
+        buffer=input
+    }
+    else{
+        buffer += input
+    };
 }
-let handleMath=input =>
+
+let handleMath=(input) =>
 {
-    if(buffer=="0") return;
+    if(buffer==="0"){
+        return;
+    }
     else 
-    {                   // operation plus min...
+    {                 
         const intBuffer= parseInt(buffer);
-        if(total=0) 
-            {total =intBuffer;}
+        if(total===0){
+            total =intBuffer;
+        }
         else 
         {  
-             maths(input);
+             maths(intBuffer);
         }
         operator=input;
-        buffer=intBuffer;
+        buffer="0";
     }
 }
 
 
 
-let refresh=input =>
+let refresh=(input) =>
 {
     screen.innerText=buffer;
 }
-let maths=input =>   // after the first operator
+let maths=(input) =>
 {
-    if(operator=="+") total +=parseInt(buffer);
-    else if(operator=="-") total -=parseInt(buffer);
-    else if(operator=="*") total *=parseInt(buffer);
-    else total /=parseInt(buffer);
-
+    if(operator==="+"){
+        total +=input;
+    }else if(operator==="-"){
+        total -=input
+    }else if(operator==="*"){
+        total *=input;
+    }else{
+        total /=input
+    }
 }
 
 init();
