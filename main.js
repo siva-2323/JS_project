@@ -6,24 +6,28 @@ const screen=document.querySelector(".screen");
 
 let init=()=>
 {
-document
-    .querySelector(".buttons")
-    .addEventListener("click",function (event){ 
-        buttonClick(event.target.innerText)
-    });
+    document
+        .querySelector(".buttons")
+        .addEventListener("click",function (event)
+        { 
+            buttonClick(event.target.innerText)
+        });
 }
+
 let buttonClick=(input) => 
 {
     if(isNaN(parseInt(input)))
     {
          handleNaN(input);   
     }
-    else {
+    else 
+    {
         handleNum(input);
     }
     refresh();  
     
 }
+
 let handleNaN=input =>
 {       
     switch (input)
@@ -32,19 +36,24 @@ let handleNaN=input =>
             buffer="0";
             total=0;
             break;
+    
         case "←":
             buffer=buffer.substring(0,buffer.length-1);
             break;
+
         case "=":
-            if (operator === null){
+            if (operator === null)
+            {
                 return;
-            }else{
+            }else
+            {
                 maths(parseInt(buffer));
                 operator = null;
                 buffer = +total;
                 total = 0;
             }
             break;   
+
         default: 
             handleMath(input);
             break;
@@ -54,23 +63,27 @@ let handleNaN=input =>
 
 let handleNum=(input) =>
 {
-    if(buffer ==="0"){
+    if(buffer ==="0")
+    {
         buffer=input
     }
-    else{
+    else
+    {
         buffer += input
     };
 }
 
 let handleMath=(input) =>
 {
-    if(buffer==="0"){
+    if(buffer==="0")
+    {
         return;
     }
     else 
     {                 
         const intBuffer= parseInt(buffer);
-        if(total===0){
+        if(total===0)
+        {
             total =intBuffer;
         }
         else 
@@ -88,15 +101,23 @@ let refresh=(input) =>
 {
     screen.innerText=buffer;
 }
+
 let maths=(input) =>
 {
-    if(operator==="+"){
+    if(operator==="+")
+    {
         total +=input;
-    }else if(operator==="-"){
+
+    }else if(operator==="-")
+    {
         total -=input
-    }else if(operator==="*"){
+
+    }else if(operator==="*")
+    {
         total *=input;
-    }else{
+        
+    }else
+    {
         total /=input
     }
 }
