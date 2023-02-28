@@ -122,4 +122,13 @@ let maths=(input) =>
     }
 }
 
+
+try 
+{
 init();
+}
+
+catch 
+{
+    alert("Unexpected error occured. Check your internet connection");
+}
